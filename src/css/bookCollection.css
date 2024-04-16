@@ -1,0 +1,77 @@
+.book-menu{
+ display: flex;
+}
+.book-menu li{
+    color: white;
+     margin-bottom:-22px;
+   list-style-type:none;
+   text-decoration:none;
+}
+.book-para p{
+    color: white;
+    margin-top: 6px;
+}
+.book-para button{
+    margin-top: 20px;
+    color:rgb(6, 175, 6);
+    margin-left: 180px;
+}
+.book-menu li .comment{
+    margin-left: 15px;
+}
+.title{
+    border:1px solid white;
+    background: yellow;
+    width: 339px;
+    height: 50px;
+    display: flex ;
+    justify-content: space-between;
+} 
+.fa-book-open-reader{
+ font-size: 30px;
+ margin-top: 6px;
+ margin-right: 7px;
+ color: red;
+}
+
+.one-chart{
+    padding: auto auto;
+   border-radius: 3px;
+   display: flex;
+}
+.one-chart .icon-letter{
+    margin-right:auto;
+}
+.one-chart img{
+    max-width: 200px;
+    margin-left: 20px;
+    border-radius: 15px 15px;
+}
+.increase{
+    margin-left: 230px;
+    border-radius: 4px 4px;
+    margin-bottom:20px;
+
+}
+.collapse.show {
+    /* Your custom styles */
+    display: flex; /* For example, change display property to flex */
+  }
+.total{
+    display: flex;
+    justify-content: space-between;
+}
+.cart .cart-button{
+    margin-bottom:13px;
+    padding: 10px 15px;
+    border-radius: 10px 10px;
+    border: 1px solid rgb(169, 83, 250);
+    background-color:rgb(169, 82, 250);
+}
+.order-form-check{
+    margin-left:10px;
+    display: flex;
+  }
+  .form-check{
+    margin-bottom: -30px;
+  }
