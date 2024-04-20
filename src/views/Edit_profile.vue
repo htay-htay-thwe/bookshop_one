@@ -56,7 +56,7 @@
 
           <ul class="nav-area">
             <div class="home"><a href="" class="nav-sub" @click.prevent="home()">HOME</a></div>
-            <div class="home"><a href="" class="nav-sub">BOOKS</a></div>
+            <div class="home"><a href="" class="nav-sub" @click="history()">BOUGHT</a></div>
             <div class=" dropdown home">
               <li class="text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Windows
@@ -169,6 +169,7 @@
         <h5 style="color:brown;">Total</h5>
         <h5 id="finalPrice"></h5>
       </div>
+      <button @click="ordering()" type="button" class="mt-3 fw-3 btn btn-success col">Order</button>
      </tr>
   
      <div v-else>There is no data!!</div>

@@ -2,8 +2,6 @@ import axios from 'axios'
 import moment from 'moment'
 import { mapGetters } from 'vuex';
 import $ from 'jquery';
-
-
 export default{
   name: 'bookDetail',
   data() {
@@ -36,15 +34,19 @@ export default{
       counts:{},
       orderLength:[],
       srcImage:"",
-     
+      successStatus:false,
     }
   },
     computed: {
         ...mapGetters(["storageToken","storageUserData","storageOrderTotal"]),
         dataOrderList() {
-          return this.storageOrderTotal;
-        },
+          if (Array.isArray(this.storageOrderTotal)) {
+            return this.storageOrderTotal.length;
+          } else {
+            return 0; 
+          }
     },
+  },
   methods: {
   decreaseQuantity(index) {
     let $parentNode = $(this).closest(".order-form-check");
@@ -146,9 +148,9 @@ SelectedWriter(writer){
     if (this.selectedGenre.length > 0 || this.selected.length > 0 || this.selectedWriter.length > 0) {
        const token = this.storageToken;
        const requestData = {
-        genres: this.selectedGenre, // Assuming this contains the selected genre
+        genres: this.selectedGenre, 
         prices: this.selected,
-        writer:this.selectedWriter // Assuming this contains the selected price ranges
+        writer:this.selectedWriter,
       };
       console.log(requestData);
        axios.post('http://localhost:8000/api/filter',requestData,{
@@ -264,19 +266,32 @@ if (response.data.filterByThree.length > 0 ) {
       }
       this.order = response.data.orderData; 
       console.log(this.order); 
-      this.loadingStatus =false,
-      this.summaryCalculation();
+      this.loadingStatus =false;
+
     })
 }else{
     this.loginStatus =false;
 }
 },
-
-
-editPage(){
-  this.$router.push({
-      name: 'Edit_profile'
+ordering(){
+  const user_id= this.storageUserData.id;
+  const token = this.storageToken;
+  console.log(token);
+  if (this.storageToken != null && this.storageToken != undefined && this.storageToken != "") {
+  axios.get(`http://localhost:8000/api/realOrder/${user_id}`,{
+      headers: {
+      Authorization: `Bearer ${token}`
+}
+}).then((response) => {
+  this.loginStatus = true;
+   console.log(response.data.realOrderData);
+    this.$store.dispatch("setOrderTotal", null);      
+    this.cart();
   })
+}else{
+  this.loginStatus =false;
+}
+
 },
 home(){
   if (this.storageToken != null && this.storageToken != undefined && this.storageToken != "") {
@@ -297,10 +312,10 @@ home(){
                 name: 'HomeView'
             })
               },
-              bookDetailData(id){
-             this.$router.push({
-            name:'bookDetail',
-            query:{
+     bookDetailData(id){
+         this.$router.push({
+         name:'bookDetail',
+         query:{
               bookId : id
             }
          }) 
@@ -359,7 +374,13 @@ home(){
       this.$router.push({
         name: 'signUp'
       })
-  }, 
+  },
+  history(){
+    event.preventDefault();
+    this.$router.push({
+        name: 'orderHistory'
+      })
+  },
     },
   mounted() {
     this.GetBook();
@@ -379,7 +400,6 @@ home(){
     }else{
       this.srcImage = "http://localhost:8000/storage/" + (this.storageUserData.image || "");
     }
-    console.log(this.srcImage);
 
  
    $(document).ready(function(){

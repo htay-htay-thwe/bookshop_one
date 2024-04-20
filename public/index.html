@@ -84,7 +84,9 @@
 <script src="../node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js"></script>
 
 <!-- bootstrap -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- javascript -->
 <script type="application/javascript" src="https://cdn.jsdelivr.net/vue.js"></script>
 
@@ -886,7 +888,7 @@ footer{
      margin-left: 40px;
      max-width: 280px;
 }
-.grid-container {
+.bookCollect{
   display: grid;
   column-gap: 40px;
   grid-template-columns: auto auto auto;
@@ -955,6 +957,22 @@ footer{
   text-align: center;
   font-size: 18px;
   font-weight: 500;
+}
+.boundary{
+  border-radius: 10px 10px;
+  border:1px solid white;
+  box-shadow: 3px 3px 3px 3px rgb(231, 215, 247);
+
+}
+.history:hover{
+color: red;
+}
+.split{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap:3px;
+  margin-bottom:50px;
+  margin-top:20px;
 }
 .icon-gp div{
 justify-content: center;
@@ -1070,13 +1088,20 @@ color: brown;
 }
 
 @media(max-width:2800px){
+  .split{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-bottom:150px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
   .grid-item{
     height:25rem;
     width:14rem;
    }
   .card-img-top{
     height:12rem;
-    width:12rem;
+  
     }
   .book-detail img{
     width:350px;
@@ -1101,7 +1126,7 @@ color: brown;
   .filter{
     max-width:470px;
   }
-  .grid-container {
+  .bookCollect{
     display: grid;
     column-gap: 20px;
     grid-template-columns: auto auto auto auto;
@@ -1127,11 +1152,15 @@ color: brown;
     display: flex;
     justify-content:space-between;
   }
+  .grid-item{
+    height:25rem;
+    width:14rem;
+   }
 }
 @media(max-width:1450px){
   .grid-item{
     height:25rem;
-    width:12rem;
+    width:13rem;
    }
   .header-sub{
       position: sticky;
@@ -1174,7 +1203,7 @@ color: brown;
   .nav-area{
     display: none;
   }
-  .grid-container {
+  .bookCollect{
     display: grid;
     column-gap: 20px;
     grid-template-columns: auto auto auto;
@@ -1197,7 +1226,7 @@ color: brown;
     height: 200px; 
   }
 
-  .grid-container {
+  .bookCollect{
     display: grid;
     column-gap: 20px;
     grid-template-columns: auto auto auto;
@@ -1209,6 +1238,13 @@ color: brown;
 }
 }
 @media(max-width:1120px){
+  .split{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-bottom:50px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
   .sub-menu-wrap{
     background-color:rgb(246, 117, 117);
     display: none;
@@ -1254,7 +1290,14 @@ color: brown;
   
 }
 @media(max-width:1086px){
-  .grid-container {
+  .split{
+    display: grid;
+    grid-template-columns: auto auto ;
+    margin-bottom:50px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
+  .bookCollect{
     display: grid;
     column-gap: 20px;
     grid-template-columns: auto auto;
@@ -1324,6 +1367,13 @@ color: brown;
 
 }
 @media(max-width:830px){
+  .split{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom:50px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
   .sub-menu-wrap{
     background-color:rgb(246, 117, 117);
     display: none;
@@ -1432,6 +1482,13 @@ color: brown;
    }
 }
 @media(max-width:792px){
+  .split{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom:50px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
   .trending{
     max-height: 2000px;
     margin-top: -60px;
@@ -1493,7 +1550,13 @@ color: brown;
    }
 }
 @media(max-width:575px){
-
+  .split{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom:50px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
   .container-fluid .book-updated img{
     margin:auto auto;
     width: 300px;
@@ -1530,6 +1593,13 @@ color: brown;
  
 }
 @media(max-width:500px){
+  .split{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom:50px;
+    margin-top:20px;
+    overflow-y: auto;
+  }
   .sub-menu-wrap{
     background-color:rgb(246, 117, 117);
     display: none;
@@ -1557,7 +1627,7 @@ color: brown;
    height:10rem;
   }
 
-  .grid-container {
+  .bookCollect{
     display: grid;
     column-gap: 0px;
     grid-template-columns: auto auto ;
@@ -1601,6 +1671,13 @@ color: brown;
   
 }
   @media(max-width:400px){
+    .split{
+      display: grid;
+      grid-template-columns: auto;
+      margin-bottom:50px;
+      margin-top:20px;
+      overflow-y: auto;
+    }
     .sub-menu-wrap{
       background-color:rgb(246, 117, 117);
       display: none;
@@ -1631,7 +1708,7 @@ color: brown;
       width: 9rem;
      height:8rem;
     }
-    .grid-container {
+    .bookCollect{
       display: grid;
       column-gap: 0px;
       grid-template-columns: auto auto ;

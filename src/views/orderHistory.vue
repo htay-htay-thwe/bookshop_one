@@ -1,29 +1,29 @@
 <template>
-    <div>
-    
-      <header style="">
+        <div>
+                <header>
           <div class="header-sub">
             <div class="heading-sub">
               <i class="p-2 fa-regular fa-clock"></i><span class="text">{{ moment().format('l') }} </span> <span class="line">/</span>
               <i class="p-2 fa-solid fa-right-to-bracket"></i>
       
-     <span v-if="!loginStatus" type="button" class="mr-2 login text-danger"  @click="Login()" ><u class="">Login </u></span> / 
-     <span v-if="!loginStatus" type="button" class="ml-2 mr-2 signup text-danger" @click="signUp()"><u class="">Sign up</u></span>
-     <span @click="logout()" v-if="loginStatus" type="button" class="ml-2 mr-2 text-danger"><u class="">Logout</u></span> /
+     <span v-if="!loginStatus" type="button" class="mr-2 login text-danger"  @click="Login()" ><u class="">Login </u></span> 
+     <span v-if="!loginStatus" type="button" class="ml-2 mr-2 signup text-danger" @click="signUp()"><u class="">/ Sign up</u></span>
+     <span @click="logout()" v-if="loginStatus" type="button" class="ml-2 mr-2 text-danger"><u class="">Logout</u></span> / 
      <span v-if="loginStatus" type="button" class="ml-2 text-white"><u class=""> <i class="fa-solid fa-user"></i>  {{ user_name }}</u></span> 
+
      </div>  
             <div class="contact-group">
               <i class='bx bxl-facebook-circle'></i>
+              <i class='bx bxl-instagram'></i>
               <i class='bx bxl-twitter'></i>
               <i class='bx bxl-youtube'></i>
-              <i class='bx bxl-instagram'></i>
               <i class='bx bx-envelope'></i>
             </div>
           </div>
 
-        </header> 
+                </header> 
 
-        <div class="navbar" style="z-index:100;display:flex;">
+                <div class="navbar" style="z-index:100;display:flex;">
           <div class="menu-btn">
         <i class="fas fa-bars"></i>
     </div>
@@ -199,25 +199,34 @@
         </a>
     </div>
 </div>
-        </div> 
-            
-            <div class=" card col-8 offset-4" style="margin-bottom:100px;background-color: rgb(198, 149, 244);margin-top: 30px;max-width:400px;height:400px;border-radius:20px 20px;">
-              <h3 class="my-3"><i class="mt-4 fa-solid fa-right-to-bracket"></i> LOGIN</h3>
-              <div class="my-3 form-group">
-              <label class="fw-bolder">Email</label>
-              <input @keyup.enter="Login" type="text" v-model="userLogin.email" placeholder="Enter Name" class="form-control"/>
-              </div> 
 
-              <div class="my-3 form-group">
-                <label class="fw-bolder">Password</label>
-                <input @keyup.enter="Login" type="text" v-model="userLogin.password" placeholder="Enter Name" class="form-control"/>
+                </div>  
+
+                <h2 class="mt-3 mb-4 text-center" style="color:chocolate;font-weight:900;">Bought Items' Lists</h2>
+                <div class=" grid-container split" style="margin-bottom:120px;">
+                  <div v-for="(order,index) in orderHistory" :key="index" class="ml-5 mr-3">
+                    <h5 class="mt-3">{{ order.created_at }}</h5>
+                    <div class="row boundary">   
+                <div class="mt-3 mb-3 col-3">
+                    <img :src="order.bookImage" class="w-100"/>
                 </div>
-            <div class="my-3 modal-footer">
-            <span class="already" @click="signUp()"><u>No Account Yet!</u></span><button class="my-3 btn btn-success" @click="login()">Login</button>
-            </div>
-            </div>
-            </div>
-   
+                <div class="mt-3 col-6">
+                    <h5 style="font-size:13px;">{{ order.bookName }}</h5>
+                    <p style="font-weight:500;color:brown;">{{ order.price }}</p>
+                </div>
+                <div class="mt-3 mb-2 mr-auto col-2">
+                   <span style="color:chocolate;font-weight:600;">quantity </span><span style="font-weight:500;">{{ order.quantity }}</span>
+                   <div style="margin-top:20px;">
+                        <small value="true" v-if="order.selected == 'true'" class="text-success">Sent</small>
+                        <small value="false" v-if="order.selected == 'false'" class="text-warning">Pending...</small>
+                        <small value="cancel" v-if="order.selected == 'cancel'" class="text-danger">Cancel</small>
+                      </div> 
+                </div>
+          </div>
+                  </div>
+               </div>
+    </div>
 </template>
-<script src="../js/login.js"></script>
+<script src="../js/orderHistory.js"></script>
+
 

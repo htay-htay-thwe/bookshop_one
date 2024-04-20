@@ -20,10 +20,41 @@ export default{
     computed: {
         ...mapGetters(["storageToken","storageUserData","storageOrderTotal"]),
         dataOrderList() {
-          return this.storageOrderTotal;
-        },
+            // Check if storageOrderTotal exists and is an array
+            if (Array.isArray(this.storageOrderTotal)) {
+              return this.storageOrderTotal.length;
+            } else {
+              return 0; // or any other default value you prefer
+            }
+          }
     },
     methods: {
+        ordering(){
+            const user_id= this.storageUserData.id;
+            const token = this.storageToken;
+            console.log(token);
+            if (this.storageToken != null && this.storageToken != undefined && this.storageToken != "") {
+            axios.get(`http://localhost:8000/api/realOrder/${user_id}`,{
+                headers: {
+                Authorization: `Bearer ${token}`
+          }
+          }).then((response) => {
+            this.loginStatus = true;
+             console.log(response.data.realOrderData);
+              this.$store.dispatch("setOrderTotal", null);      
+              this.cart();
+            })
+          }else{
+            this.loginStatus =false;
+          }
+          
+          },
+        history(){
+            event.preventDefault();
+            this.$router.push({
+                name: 'orderHistory'
+              })
+          },
         cart(){
             this.loadingStatus =true;
             const user_id= this.storageUserData.id;

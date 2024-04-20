@@ -4,6 +4,7 @@ import BookCollection from '../views/BookCollection.vue'
 import bookDetail from '../views/bookDetail.vue'
 import LoginView from '../views/LoginView.vue'
 import signUp from '../views/signUp.vue'
+import orderHistory from '../views/orderHistory.vue'
 import Edit_profile from '../views/Edit_profile.vue'
 
 
@@ -38,6 +39,11 @@ const routes = [
     path:'/editUserData',
     name:'Edit_profile',
     component:Edit_profile
+  },
+  {
+    path:'/orderHistory',
+    name:'orderHistory',
+    component:orderHistory
   }
 ]
 
