@@ -1,6 +1,8 @@
-## Online BooKShop with php and vuejs 
-..e-commerce or online shop ပုံစံဖြင့်အတုယူလုပ်ထားခြင်းဖြစ်ပါသည် ဓာတ်ပုံများကို book folder တွင်ရရှိနိုင်ပါသည်၊၊ 
-It is similar to online shop or e-commerce website.You can see photo in book folder.
+### Online BooKShop with php and vuejs 
+## e-commerce or online shop ပုံစံဖြင့်အတုယူလုပ်ထားခြင်းဖြစ်ပါသည် ဓာတ်ပုံများကို book folder တွင်ရရှိနိုင်ပါသည်၊၊ 
+
+## It is similar to online shop or e-commerce website.You can see photo in book folder.
+
 ## Home View
 ![localhost_8080_](https://github.com/htay-htay-thwe/bookshop_one/assets/130959683/8471b4f5-8687-4327-9cc5-69fcaefa3b38)
 
