@@ -6,11 +6,11 @@ An e-commerce platform built with **PHP** and **Vue.js**, designed to manage and
 
 ## 🚀 Features
 
-- 🛒 Browse and search a collection of books
+- 🛒 Browse and search a collection of books 
 - 🔐 User authentication with login and sign-up functionality
-- 📖 Detailed book information and images
-- 🛍️ Add books to cart and manage orders
-- 🎨 Responsive design for desktop and mobile devices
+- 📖 Detailed book information and images / give comments
+- 🛍️ Add books to cart and manage orders 
+- 🎨 Responsive design for desktop and mobile devices  
 
 ---
 
