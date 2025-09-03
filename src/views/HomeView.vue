@@ -102,7 +102,7 @@
           </ul>
           
     <span type="button" class="position-relative cart">
-      <button @click="cart()" class="cart-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="text-white fa-solid fa-cart-shopping"></i>
+      <button @click="cart" class="cart-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="text-white fa-solid fa-cart-shopping"></i>
         <span class="top-0 position-absolute start-100 translate-middle badge rounded-pill bg-danger" v-if="loginStatus">
          {{  dataOrderList.length }}
     <span class="visually-hidden">unread messages</span>
@@ -214,55 +214,51 @@
                   class="fa-regular fa-comment"></i> 20
             </div>
             <div class="script">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Quis ipsum suspendisse ultrices...
+              In a world where memories can be stolen, seventeen-year-old Elara struggles to hold onto the fragments of her past. When a mysterious stranger offers her a chance to reclaim what was lost, she embarks
             </div>
           </div>
 
           <!-- updated -->
           <div class="mt-5 col-lg-5 book-updated col-md-5 col-sm-4">
-            <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+            <img src="book/book1.jpg" class="shadow-sm" />
           </div>
           <div class="mt-5 col-lg-6 col-md-6 col-sm-8">
-            <p class="book-title">HERE'S AN HOUR OF SIDE-QUESTS FROM THE OUTER WORLDS...</p>
+            <p class="book-title">When the ancient city of Aeloria is threatened by a dark force rising from the ashes of history,</p>
             <div class="title-sub">
               <span>by </span><span class="admin">Admin</span> / <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i
                   class="fa-regular fa-comment"></i> 20
             </div>
             <div class="script">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Quis ipsum suspendisse ultrices...
+              young blacksmith Kael discovers a secret buried in his family’s past—a power that could save the world or destroy it. Pursued by enemies who will stop at nothing, Kael must forge unlikely alliances, confront his deepest fears, and embrace the destiny he never asked for. The Last Ember is a thrilling journey of courage, betrayal, and the spark of hope that can ignite even in the darkest times.
             </div>
           </div>
 
           <div class="mt-5 col-lg-5 book-updated col-md-5 col-sm-4">
-            <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+            <img src="book/book2.jpg" class="shadow-sm" />
           </div>
           <div class="mt-5 col-lg-6 col-md-6 col-sm-8">
-            <p class="book-title">HERE'S AN HOUR OF SIDE-QUESTS FROM THE OUTER WORLDS...</p>
+            <p class="book-title">In the quiet town of Eldermoor, secrets sleep beneath the cobblestones—until a young historian,</p>
             <div class="title-sub">
               <span>by</span> <span class="admin">Admin</span> / <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i
                   class="fa-regular fa-comment"></i> 20
             </div>
             <div class="script">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Quis ipsum suspendisse ultrices...
+              Elara, uncovers a diary that shouldn’t exist. Each page pulls her deeper into a centuries-old mystery of love, betrayal, and revenge. As shadows of the past awaken, Elara realizes that some truths are better left buried. Whispers of the Forgotten is a haunting tale 
             </div>
           </div>
 
 
           <div class="mt-5 col-lg-5 book-updated col-md-5 col-sm-4 d-md-none d-lg-block">
-            <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+            <img src="book/book3.jpg" class="shadow-sm" />
           </div>
           <div class="mt-5 col-lg-6 col-md-6 col-sm-8 d-md-none d-lg-block">
-            <p class="book-title">HERE'S AN HOUR OF SIDE-QUESTS FROM THE OUTER WORLDS...</p>
+            <p class="book-title">When a brilliant scientist discovers a way to glimpse into the future, she uncovers a vision of a world on the brink of collapse.</p>
             <div class="title-sub">
               <span>by</span> <span class="admin">Admin</span> / <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i
                   class="fa-regular fa-comment"></i> 20
             </div>
             <div class="script">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Quis ipsum suspendisse ultrices...
+              But predicting tomorrow comes with a price—every choice she makes in the present ripples through time in unexpected ways. Racing against forces that want to control her knowledge, she must decide whether to change destiny or let the future unfold.
             </div>
           </div>
         </div>
@@ -294,10 +290,20 @@
                 <div class="container ">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book4.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
-                    <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
+                    <p>When a brilliant scientist discovers a way to glimpse into the future, she uncovers a vision of a world on the brink of collapse.</p>
+                    <div class="time">
+                      <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-5">
+                    <img src="book/book5.jpg" class="shadow-sm" />
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-5">
+                    <p>In the quiet town of Eldermoor, secrets sleep beneath the cobblestones—until a young historian,</p>
                     <div class="time">
                       <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
                     </div>
@@ -307,27 +313,17 @@
                     <img src="book/nay-kyar-pann.png" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
-                    <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
+                    <p>When the ancient city of Aeloria is threatened by a dark force rising from the ashes of history,</p>
                     <div class="time">
                       <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
                     </div>
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book1.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
-                    <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
-                    <div class="time">
-                      <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
-                  </div>
-                  <div class="col-lg-5 col-md-5 col-sm-5">
-                    <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
+                    <p>HERE'S AN HOUR OF SIDE-QUESTS FROM THE OUTER WORLDS...</p>
                     <div class="time">
                       <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
                     </div>
@@ -342,7 +338,7 @@
                     <div class="container">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book2.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -352,7 +348,7 @@
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book3.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -362,7 +358,7 @@
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book4.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -372,7 +368,7 @@
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book5.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -398,7 +394,7 @@
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book1.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-6 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -408,7 +404,7 @@
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book2.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-6 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -418,7 +414,7 @@
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-5">
-                    <img src="book/nay-kyar-pann.png" class="shadow-sm" />
+                    <img src="book/book3.jpg" class="shadow-sm" />
                   </div>
                   <div class="col-lg-6 col-md-5 col-sm-5">
                     <p>DOWNWELL AND SPACE HULK: TACTICS ARE COMING TO XBOX GAME PASS FOR PC</p>
@@ -446,7 +442,19 @@
               <div class="number">9.5</div>
             </div>
             <div class="mt-3 col-9 best">
-              <p>THIS GAMING LAPTOP WITH A GTX 1660...</p>
+              <p>When a brilliant scientist discovers a way to glimpse into the future, she uncovers a vision of </p>
+              <div class="time">
+                <i class="fa-regular fa-clock"></i> Sep 01,2020 / <i class="fa-regular fa-comment"></i> 20
+              </div>
+            </div>
+
+
+            <!-- best of -->
+            <div class="col-3">
+              <div class="number">9.5</div>
+            </div>
+            <div class="col-9 best">
+              <p>In the quiet town of Eldermoor, secrets sleep</p>
               <div class="time">
                 <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
               </div>
@@ -458,21 +466,9 @@
               <div class="number">9.5</div>
             </div>
             <div class="col-9 best">
-              <p>THIS GAMING LAPTOP WITH A GTX 1660...</p>
+              <p>When the ancient city of Aeloria is threatened</p>
               <div class="time">
-                <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
-              </div>
-            </div>
-
-
-            <!-- best of -->
-            <div class="col-3">
-              <div class="number">9.5</div>
-            </div>
-            <div class="col-9 best">
-              <p>THIS GAMING LAPTOP WITH A GTX 1660...</p>
-              <div class="time">
-                <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
+                <i class="fa-regular fa-clock"></i> Aug 02,2019 / <i class="fa-regular fa-comment"></i> 20
               </div>
             </div>
           </div>
@@ -535,9 +531,9 @@
       >
         <swiper-slide>
           <div class="card" style="width: 15rem;height:22rem;">
-            <img src="book/nay-kyar-pann.png" class="card-img-top w-100" alt="..." style="height:200px;">
+            <img src="book/book4.jpg" class="card-img-top w-100" alt="..." style="height:200px;">
             <div class="card-body">
-              <p class="card-text card-letter">Some quick example text to build on the card title and make up the bulk</p>
+              <p class="card-text card-letter">When a brilliant scientist discovers a way to glimpse into the future, she uncovers a vision of a world on the brink of collapse.</p>
               <div class="time">
                 <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
               </div>
@@ -548,9 +544,9 @@
 
         <swiper-slide>
           <div class="card" style="width: 15rem;height:22rem;">
-            <img src="book/nay-kyar-pann.png" class="card-img-top w-100" alt="..." style="height:200px;">
+            <img src="book/book4.jpg" class="card-img-top w-100" alt="..." style="height:200px;">
             <div class="card-body">
-              <p class="card-text card-letter">Some quick example text to build on the card title and make up the bulk</p>
+              <p class="card-text card-letter">unexpected ways. Racing against forces that want to control her knowledge</p>
               <div class="time">
                 <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
               </div>
@@ -561,9 +557,9 @@
 
         <swiper-slide >
           <div class="card" style="width: 15rem;height:22rem;">
-            <img src="book/nay-kyar-pann.png" class="card-img-top w-100" alt="..." style="height:200px;">
+            <img src="book/book5.jpg" class="card-img-top w-100" alt="..." style="height:200px;">
             <div class="card-body">
-              <p class="card-text card-letter">Some quick example text to build on the card title and make up the bulk</p>
+              <p class="card-text card-letter">Elara, uncovers a diary that shouldn’t exist. Each page pulls her deeper into a centuries-old mystery of love, betrayal, and revenge</p>
               <div class="time">
                 <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
               </div>
@@ -575,7 +571,7 @@
           <div class="card" style="width: 15rem;height:22rem;">
             <img src="book/nay-kyar-pann.png" class="card-img-top w-100" alt="..." style="height:200px;">
             <div class="card-body">
-              <p class="card-text card-letter">Some quick example text to build on the card title and make up the bulk</p>
+              <p class="card-text card-letter">When the ancient city of Aeloria is threatened by a dark force rising from the ashes</p>
               <div class="time">
                 <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
               </div>
@@ -585,9 +581,9 @@
 
         <swiper-slide>
             <div class="card" style="width: 15rem;height:22rem;">
-              <img src="book/nay-kyar-pann.png" class="card-img-top w-100" alt="..." style="height:200px;">
+              <img src="book/book1.jpg" class="card-img-top w-100" alt="..." style="height:200px;">
               <div class="card-body">
-                <p class="card-text card-letter">Some quick example text to build on the card title and make up the bulk</p>
+                <p class="card-text card-letter">Pursued by enemies who will stop at nothing, Kael must forge unlikely alliances, confront his deepest fears</p>
                 <div class="time">
                   <i class="fa-regular fa-clock"></i> Aug 01,2019 / <i class="fa-regular fa-comment"></i> 20
                 </div>
@@ -597,7 +593,7 @@
 
          <swiper-slide>
           <div class="card" style="width: 15rem;height:22rem;">
-            <img src="book/nay-kyar-pann.png" class="card-img-top w-100" alt="..." style="height:200px;">
+            <img src="book/book5.jpg" class="card-img-top w-100" alt="..." style="height:200px;">
             <div class="card-body">
               <p class="card-text card-letter">Some quick example text to build on the card title and make up the bulk</p>
               <div class="time">
@@ -618,18 +614,21 @@
         <div class="container subscribe-insta">
           <div class="row">
 
-            <div class="overflow-hidden col-lg-4 col-md-6 input">
+            <div class="overflow-hidden col-lg-4 col-md-6 ">
               <span class="instagram">
                 <div class="box"></div>
                 <span class="text-white post-title">SUBSCRIBE</span>
                 <span></span>
               </span>
-              <div class="para col-lg-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor.</div>
-              <ul class="subscribe">
-                <div class="parallelogram"><input type="text" placeholder="Name"></div>
-                <div class="parallelogram"><input type="text" placeholder="Email"></div>
-                <a class="button parallelogram" href="#"><button class="skew-fix">Subscribe</button></a>
-              </ul>
+              <!-- <div class="para col-lg-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor.</div> -->
+             <div class="subscribe">
+  <div class="parallelogram"><input type="text" placeholder="Name"></div>
+  <div class="parallelogram"><input type="text" placeholder="Email"></div>
+  <div class="parallelogram button">
+    <button class="skew-fix">Subscribe</button>
+  </div>
+</div>
+
             </div>
             <div class="overflow-hidden col-lg-4 col-md-6">
               <span class="instagram">
@@ -640,16 +639,16 @@
 
               <div class="row four-books row-cols-2 row-cols-lg-3 gx-0 g-lg-2">
                 <div class="col-6 d-flex justify-content-end">
-                  <img src="book/book_six.png" />
+                  <img src="book/book2.jpg" />
                 </div>
                 <div class="col-6">
-                  <img src="book/book_six.png" />
+                  <img src="book/book1.jpg" />
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                  <img src="book/book_six.png" />
+                  <img src="book/book3.jpg" />
                 </div>
                 <div class="col-6">
-                  <img src="book/book_six.png" />
+                  <img src="book/book4.jpg" />
                 </div>
               </div>
 
@@ -678,25 +677,25 @@
                 <div>
                   <div class="mt-2 genrePage">
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Comedy</span></div>
+                      <div class="p-1 genre"><span>Action</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Love</span></div>
+                      <div class="p-1 genre"><span>Politics</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Dramatic</span></div>
+                      <div class="p-1 genre"><span>Science</span></div>
                     </div>
                   </div>
 
                   <div class="mt-2 genrePage">
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Comedy</span></div>
+                      <div class="p-1 genre"><span>Tech</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Love</span></div>
+                      <div class="p-1 genre"><span>Motivation</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Dramatic</span></div>
+                      <div class="p-1 genre"><span>Psychology</span></div>
                     </div>
                   </div>
 
@@ -705,34 +704,22 @@
                       <div class="p-1 genre"><span>Scientific</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Romantic</span></div>
+                      <div class="p-1 genre"><span>Manga</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Love</span></div>
-                    </div>
-                  </div>
-
-                  <div class="mt-2 genrePage">
-                    <div class="col parallelogram">
-                      <div class="p-1 genre"><span>History</span></div>
-                    </div>
-                    <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Love</span></div>
-                    </div>
-                    <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Dramatic</span></div>
+                      <div class="p-1 genre"><span>Article</span></div>
                     </div>
                   </div>
 
                   <div class="mt-2 genrePage">
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Comedy</span></div>
+                      <div class="p-1 genre"><span>literature</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Love</span></div>
+                      <div class="p-1 genre"><span>Math</span></div>
                     </div>
                     <div class="col parallelogram">
-                      <div class="p-1 genre"><span>Dramatic</span></div>
+                      <div class="p-1 genre"><span>beauty</span></div>
                     </div>
                   </div>
                 </div>
@@ -751,9 +738,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import moment from 'moment'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
-
-
 
 export default {
   name: 'HomeView',
