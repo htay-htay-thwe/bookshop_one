@@ -124,9 +124,9 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
  
-  <tr class="offcanvas-body" v-if="loginStatus" style="margin-bottom:70px;">
+  <div class="offcanvas-body" v-if="loginStatus" style="margin-bottom:70px;">
     <div v-for="(orderCart,index) in order" :key="orderCart.id" class="order-form-check">
-      <td>
+      <div>
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
         </div>
@@ -143,15 +143,20 @@
          </button>
      </div>
   
-     
-     <div class="increase">
-        <button class="btn btn-primary btn-sm plus-btn" ><i class="fa-solid fa-plus"></i></button>
-        <span class="p-2 quantity">{{ orderCart.quantity }}</span>
-        <button class="btn btn-danger btn-sm minus-btn"><i class="fa-solid fa-minus"></i></button>
-     </div>
+ <div class="increase">
+  <button @click="decreaseQuantity(index)" class="btn btn-danger btn-sm minus-btn">
+    <i class="fa-solid fa-minus"></i>
+  </button>
+  <span class="p-2 quantity">{{ orderCart.quantity }}</span>
+  <button @click="increaseQuantity(index)" class="btn btn-primary btn-sm plus-btn">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+</div>
+
+
      <div class="mb-4" style=" display: block;border: 0.3px solid black;"></div>
      </div>
-    </td>
+    </div>
    
      </div>
 
@@ -170,7 +175,7 @@
         <h5 style="color:brown;">Total</h5>
         <h5 id="finalPrice"></h5>
       </div>
-     </tr>
+     </div>
   
      <div v-else>There is no data!!</div>
 </div>
@@ -335,9 +340,9 @@
               <h5 class="mt-0" style="color:grey;">{{ Data.user_name }}</h5>
               {{ Data.comment }}
               <div>
-              <img v-bind:src="Data.comment_image" class="card-img-top" alt="...">
+             <img v-if="Data.comment_image" :src="Data.comment_image" class="card-img-top" alt="...">
               </div>
-              <div class="all-comment">
+              <!-- <div class="all-comment">
               <span class="ml-4 reply" @click="handleReplyClick">Add Reply</span>
               </div>
                <div>aaaaaaaaaaaaaaaaa</div> 
@@ -348,7 +353,7 @@
                 <span class="ml-4 likes-icon"><i class="fa-regular fa-thumbs-down"></i> <span class="comment-number">10</span></span>
                 <span class="all-comment"><span class="ml-4 reply" @click="handleReplyClick">Add Reply</span></span>
                 </div> 
-               </div> 
+               </div>  -->
               </div>
                <div>
                 </div> 

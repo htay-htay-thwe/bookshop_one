@@ -2,7 +2,7 @@
 import { mapGetters } from 'vuex';
 import $ from 'jquery';
 import moment from 'moment'
-import api from '@/api';
+import { api, BOOKS_BASE_URL } from '@/api';
 export default {
     name: 'LoginView',
     data() {
@@ -14,6 +14,10 @@ export default {
             },
             moment: moment,
             loginStatus: false,
+            loadingStatus: false,
+            srcImage: "",
+            order: "",
+            user_name: ""
         }
     },
     computed: {
@@ -38,7 +42,7 @@ export default {
                     this.loginStatus = true;
                     for (let i = 0; i < response.data.orderData.length; i++) {
                         if (response.data.orderData[i].bookImage != null) {
-                            response.data.orderData[i].bookImage = "http://localhost:8000/storage/" + response.data.orderData[i].bookImage;
+                            response.data.orderData[i].bookImage = BOOKS_BASE_URL + response.data.orderData[i].bookImage;
                         }
                     }
                     this.order = response.data.orderData;

@@ -5,7 +5,7 @@ import { required } from '@vuelidate/validators'
 import { reactive, computed } from 'vue'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import $ from 'jquery';
-import api from '@/api';
+import { api, BOOKS_BASE_URL } from '@/api';
 
 
 export default {
@@ -91,7 +91,7 @@ export default {
           this.loginStatus = true;
           for (let i = 0; i < response.data.orderData.length; i++) {
             if (response.data.orderData[i].bookImage != null) {
-              response.data.orderData[i].bookImage = "http://localhost:8000/storage/" + response.data.orderData[i].bookImage;
+              response.data.orderData[i].bookImage = BOOKS_BASE_URL + response.data.orderData[i].bookImage;
             }
           }
           this.order = response.data.orderData;
@@ -104,14 +104,14 @@ export default {
       }
     },
     decreaseQuantity(index) {
-      let $parentNode = $(this).closest(".order-form-check");
-      let $qty = Number($parentNode.find('.quantity').text()) - 1;
-      if ($qty > 0) {
+      if (this.order[index].quantity > 1) {
         this.order[index].quantity--;
         this.updateTotal(index);
-      } else {
-        $parentNode.find('.minus-btn').attr("disabled", true);
       }
+    },
+    increaseQuantity(index) {
+      this.order[index].quantity++;
+      this.updateTotal(index);
     },
     updateTotal(index) {
       const price = parseFloat(this.order[index].price);
@@ -121,13 +121,12 @@ export default {
     },
     summaryCalculation() {
       let $totalPrice = 0;
-      $('.offcanvas-end td').each(function (index, row) {
+      $('.offcanvas-end').each(function (index, row) {
         $totalPrice += Number($(row).find('#total').text().replace("kyats", ""));
         console.log($totalPrice);
       });
       $("#subTotalPrice").text(`${$totalPrice} Kyats`);
       $("#finalPrice").text(`${$totalPrice + 3000} Kyats`);
-
     },
     remove(id, index) {
       console.log(index);
@@ -326,7 +325,7 @@ export default {
 
           this.loadingStatus = false;
           this.loginStatus = true;
-          response.data.bookData.bookImage = "http://localhost:8000/storage/" + response.data.bookData.bookImage;
+          response.data.bookData.bookImage = BOOKS_BASE_URL + response.data.bookData.bookImage;
           this.books = response.data.bookData;
           this.user_name = this.storageUserData.name;
 
@@ -394,6 +393,9 @@ export default {
           console.log(response.data.commentData);
           this.previewImage = '';
           this.getCommentData();
+          if (fileInput) {
+            fileInput.value = '';
+          }
         })
       }
     },
@@ -413,7 +415,7 @@ export default {
 
         for (let i = 0; i < response.data.getCommentData.length; i++) {
           if (response.data.getCommentData[i].comment_image != null) {
-            response.data.getCommentData[i].comment_image = "http://localhost:8000/storage/" + response.data.getCommentData[i].comment_image;
+            response.data.getCommentData[i].comment_image = BOOKS_BASE_URL + response.data.getCommentData[i].comment_image;
           }
           this.postId = urlParams.get('bookId');
           console.log(this.postId);
@@ -483,12 +485,12 @@ export default {
     this.orderLength = this.storageOrderTotal;
     this.user_name = this.storageUserData.name;
     console.log(this.storageToken);
-    if (this.storageUserData.image && this.storageUserData.image.startsWith("http://localhost:8000/storage/")) {
+    if (this.storageUserData.image && this.storageUserData.image.startsWith(BOOKS_BASE_URL)) {
       this.srcImage = this.storageUserData.image;
     } else if (this.storageUserData.image === null) {
       this.srcImage = "book/default.png";
     } else {
-      this.srcImage = "http://localhost:8000/storage/" + (this.storageUserData.image || "");
+      this.srcImage = BOOKS_BASE_URL + (this.storageUserData.image || "");
     }
     console.log(this.srcImage);
 
@@ -507,65 +509,6 @@ export default {
         $('.side-bar').removeClass('active');
         $('.menu-btn').css('visibility', 'visible');
       })
-      $(document).on('click', '.plus-btn', function () {
-        console.log("Plus button clicked");
-        let $parentNode = $(this).closest(".order-form-check");
-        console.log("$parentNode:", $parentNode);
-
-        let $price = parseFloat($parentNode.find('.price').val());
-        console.log("$price:", $price);
-
-        let $qty = Number($parentNode.find('.quantity').text()) + 1;
-        $parentNode.find('.quantity').text($qty);
-        console.log("$qty:", $qty);
-
-
-        let $total = $price * $qty;
-        console.log("$total:", $total);
-
-        $parentNode.find('#total').text($total + " kyats");
-        summaryCalculation();
-
-      });
-
-      $(document).on('click', '.minus-btn', function () {
-        console.log("Plus button clicked");
-        let $parentNode = $(this).closest(".order-form-check");
-
-        let $price = parseFloat($parentNode.find('.price').val());
-
-
-        let $qty = Number($parentNode.find('.quantity').text());
-        if ($qty > 0) {
-          $qty--; // Decrement quantity
-          $parentNode.find('.quantity').text($qty);
-        }
-        let $total = $price * $qty;
-        console.log("$total:", $total);
-        $parentNode.find('#total').text($total + " kyats");
-
-        summaryCalculation();
-
-      });
-
-
-      $('.profile').click(function () {
-        $(this).next('#subMenu').slideToggle();
-      });
-
-
-
-      function summaryCalculation() {
-        let $totalPrice = 0;
-        console.log("$totalPrice:", $totalPrice);
-        $('.offcanvas-end td').each(function (index, row) {
-          console.log(row);
-          $totalPrice += Number($(row).find('#total').text().replace("kyats", ""));
-          console.log($totalPrice);
-        });
-        $("#subTotalPrice").text(`${$totalPrice} Kyats`);
-        $("#finalPrice").text(`${$totalPrice + 3000} Kyats`);
-      }
     })
   }
 }

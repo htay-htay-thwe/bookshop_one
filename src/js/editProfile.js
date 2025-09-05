@@ -4,7 +4,7 @@ import moment from 'moment'
 import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import $ from 'jquery';
-import api from '@/api';
+import { api, BOOKS_BASE_URL } from '@/api';
 
 // import bcrypt from 'bcryptjs';
 
@@ -92,7 +92,7 @@ export default {
           Authorization: `Bearer ${token}`
         }
       }).then((response) => {
-        response.data.getUserData.image = "http://localhost:8000/storage/" + response.data.getUserData.image;
+        response.data.getUserData.image = BOOKS_BASE_URL + response.data.getUserData.image;
         this.getUserData = response.data.getUserData;
         this.$store.dispatch('setUserData', response.data.getUserData);
         this.successUserStatus = true;
@@ -122,7 +122,7 @@ export default {
           this.loginStatus = true;
           for (let i = 0; i < response.data.orderData.length; i++) {
             if (response.data.orderData[i].bookImage != null) {
-              response.data.orderData[i].bookImage = "http://localhost:8000/storage/" + response.data.orderData[i].bookImage;
+              response.data.orderData[i].bookImage = BOOKS_BASE_URL + response.data.orderData[i].bookImage;
             }
           }
           this.order = response.data.orderData;
@@ -213,17 +213,17 @@ export default {
     this.checkToken();
     console.log(this.storageToken);
 
-    if (this.storageUserData.image && this.storageUserData.image.startsWith("http://localhost:8000/storage/")) {
+    if (this.storageUserData.image && this.storageUserData.image.startsWith(BOOKS_BASE_URL)) {
       this.srcImage = this.storageUserData.image;
     } else if (this.storageUserData.image === null) {
       this.srcImage = "book/default.png";
     } else {
-      this.srcImage = "http://localhost:8000/storage/" + (this.storageUserData.image || "");
+      this.srcImage = BOOKS_BASE_URL + (this.storageUserData.image || "");
     }
 
     this.orderLength = this.storageOrderTotal;
     this.user_name = this.storageUserData.name;
-    this.srcImage = "http://localhost:8000/storage/" + this.storageUserData.image;
+    this.srcImage = BOOKS_BASE_URL + this.storageUserData.image;
     console.log(this.storageToken);
 
     $(document).ready(function () {

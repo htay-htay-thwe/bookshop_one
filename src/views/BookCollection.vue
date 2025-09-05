@@ -124,9 +124,9 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
  
-  <tr class="offcanvas-body" v-if="loginStatus" style="margin-bottom:70px;">
+  <div class="offcanvas-body" v-if="loginStatus" style="margin-bottom:70px;">
     <div v-for="(orderCart,index) in order" :key="orderCart.id" class="order-form-check">
-      <td>
+      <div>
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
         </div>
@@ -144,14 +144,20 @@
      </div>
   
      
-     <div class="increase">
-        <button class="btn btn-primary btn-sm plus-btn" ><i class="fa-solid fa-plus"></i></button>
-        <span class="p-2 quantity">{{ orderCart.quantity }}</span>
-        <button class="btn btn-danger btn-sm minus-btn"><i class="fa-solid fa-minus"></i></button>
-     </div>
+  <div class="increase">
+  <button class="btn btn-primary btn-sm" @click="incrementQuantity(index)">
+    <i class="fa-solid fa-plus"></i>
+  </button>     
+  <span class="p-2 quantity">{{ orderCart.quantity }}</span>
+  <button class="btn btn-danger btn-sm" @click="decrementQuantity(index)">
+    <i class="fa-solid fa-minus"></i>
+  </button>     
+</div>
+
+
      <div class="mb-4" style=" display: block;border: 0.3px solid black;"></div>
      </div>
-    </td>
+    </div>
    
      </div>
 
@@ -170,7 +176,7 @@
         <h5 style="color:brown;">Total</h5>
         <h5 id="finalPrice"></h5>
       </div>
-     </tr>
+     </div>
   
      <div v-else>There is no data!!</div>
 </div>

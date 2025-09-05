@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { mapGetters } from 'vuex';
 import $ from 'jquery';
-import api from '@/api';
+import { api, BOOKS_BASE_URL } from '@/api';
 
 
 export default {
@@ -56,31 +56,14 @@ export default {
         $parentNode.find('.minus-btn').attr("disabled", true);
       }
     },
-    updateTotal(index) {
-      const price = parseFloat(this.order[index].price);
-      const quantity = this.order[index].quantity;
-      const total = price * quantity;
-      this.order[index].total = total;
-    },
-    summaryCalculation() {
-      let $totalPrice = 0;
-      $('.offcanvas-end td').each(function (index, row) {
-        $totalPrice += Number($(row).find('#total').text().replace("kyats", ""));
-        console.log($totalPrice);
-      });
-      $("#subTotalPrice").text(`${$totalPrice} Kyats`);
-      $("#finalPrice").text(`${$totalPrice + 3000} Kyats`);
-    },
+
     remove(id, index) {
-      console.log(index);
       this.order.splice(index, 1);
-      console.log('press remove');
 
       let data = {
         book_id: id,
         user_id: this.storageUserData.id,
       }
-      console.log(data);
       const token = this.storageToken;
       api.post("/remove/order", data, {
         headers: {
@@ -89,8 +72,6 @@ export default {
       }).then((response) => {
 
         this.$store.dispatch('setOrderTotal', response.data.updateOrderTotal);
-        console.log(response.data.updateOrderTotal);
-        console.log(this.storageOrderTotal);
         this.summaryCalculation();
       })
     },
@@ -108,37 +89,31 @@ export default {
 
       if (showRange !== '') {
         const index = this.selected.indexOf(showRange);
-        console.log(index);
         if (index === -1) {
           this.selected.push(showRange);
         } else {
           this.selected.splice(index, 1);
         }
-        console.log(this.selected);
       } else {
         this.dataEmpty = true;
       }
       if (genre !== '') {
         const indexGenre = this.selectedGenre.indexOf(genre);
-        console.log(indexGenre);
         if (indexGenre === -1) {
           this.selectedGenre.push(genre);
         } else {
           this.selectedGenre.splice(indexGenre, 1);
         }
-        console.log(this.selectedGenre);
       } else {
         this.dataEmpty = true;
       }
       if (writer !== '') {
         const indexGenre = this.selectedWriter.indexOf(writer);
-        console.log(indexGenre);
         if (indexGenre === -1) {
           this.selectedWriter.push(writer);
         } else {
           this.selectedWriter.splice(indexGenre, 1);
         }
-        console.log(this.selectedWriter);
       } else {
         this.dataEmpty = true;
       }
@@ -150,7 +125,6 @@ export default {
           prices: this.selected,
           writer: this.selectedWriter // Assuming this contains the selected price ranges
         };
-        console.log(requestData);
         api.post('/filter', requestData, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -160,13 +134,12 @@ export default {
           if (
             this.postLists === 0
           ) {
-            console.log('no data');
             this.dataEmpty = true;
           }
           if (response.data.filterByPrice != '') {
             for (let i = 0; i < response.data.filterByPrice.length; i++) {
               if (response.data.filterByPrice[i].bookImage != null) {
-                response.data.filterByPrice[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByPrice[i].bookImage;
+                response.data.filterByPrice[i].bookImage = BOOKS_BASE_URL + response.data.filterByPrice[i].bookImage;
               }
             }
 
@@ -174,14 +147,14 @@ export default {
           } else if (response.data.filterByGenre != '') {
             for (let i = 0; i < response.data.filterByGenre.length; i++) {
               if (response.data.filterByGenre[i].bookImage != null) {
-                response.data.filterByGenre[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByGenre[i].bookImage;
+                response.data.filterByGenre[i].bookImage = BOOKS_BASE_URL + response.data.filterByGenre[i].bookImage;
               }
             }
             this.postLists = response.data.filterByGenre;
           } else if (response.data.filterByWriter != '') {
             for (let i = 0; i < response.data.filterByWriter.length; i++) {
               if (response.data.filterByWriter[i].bookImage != null) {
-                response.data.filterByWriter[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByWriter[i].bookImage;
+                response.data.filterByWriter[i].bookImage = BOOKS_BASE_URL + response.data.filterByWriter[i].bookImage;
               }
             }
             this.postLists = response.data.filterByWriter;
@@ -189,7 +162,7 @@ export default {
           if (response.data.filterByPriceGenre.length > 0) {
             for (let i = 0; i < response.data.filterByPriceGenre.length; i++) {
               if (response.data.filterByPriceGenre[i].bookImage !== null) {
-                response.data.filterByPriceGenre[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByPriceGenre[i].bookImage;
+                response.data.filterByPriceGenre[i].bookImage = BOOKS_BASE_URL + response.data.filterByPriceGenre[i].bookImage;
               }
             }
             this.postLists = response.data.filterByPriceGenre;
@@ -198,7 +171,7 @@ export default {
           if (response.data.filterByPriceWriter.length > 0) {
             for (let i = 0; i < response.data.filterByPriceWriter.length; i++) {
               if (response.data.filterByPriceWriter[i].bookImage !== null) {
-                response.data.filterByPriceWriter[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByPriceWriter[i].bookImage;
+                response.data.filterByPriceWriter[i].bookImage = BOOKS_BASE_URL + response.data.filterByPriceWriter[i].bookImage;
               }
             }
             this.postLists = response.data.filterByPriceWriter;
@@ -206,7 +179,7 @@ export default {
           if (response.data.filterByGenreWriter.length > 0) {
             for (let i = 0; i < response.data.filterByGenreWriter.length; i++) {
               if (response.data.filterByGenreWriter[i].bookImage !== null) {
-                response.data.filterByGenreWriter[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByGenreWriter[i].bookImage;
+                response.data.filterByGenreWriter[i].bookImage = BOOKS_BASE_URL + response.data.filterByGenreWriter[i].bookImage;
               }
             }
             this.postLists = response.data.filterByGenreWriter;
@@ -215,7 +188,7 @@ export default {
           if (response.data.filterByThree.length > 0) {
             for (let i = 0; i < response.data.filterByThree.length; i++) {
               if (response.data.filterByThree[i].bookImage !== null) {
-                response.data.filterByThree[i].bookImage = "http://localhost:8000/storage/" + response.data.filterByThree[i].bookImage;
+                response.data.filterByThree[i].bookImage = BOOKS_BASE_URL + response.data.filterByThree[i].bookImage;
               }
             }
             this.postLists = response.data.filterByThree;
@@ -235,10 +208,9 @@ export default {
           Authorization: `Bearer ${token}`
         }
       }).then((response) => {
-        console.log(response.data.search);
         for (let i = 0; i < response.data.search.length; i++) {
           if (response.data.search[i].bookImage != null) {
-            response.data.search[i].bookImage = "http://localhost:8000/storage/" + response.data.search[i].bookImage;
+            response.data.search[i].bookImage = BOOKS_BASE_URL + response.data.search[i].bookImage;
           }
         }
         this.postLists = response.data.search;
@@ -248,7 +220,6 @@ export default {
       this.loadingStatus = true;
       const user_id = this.storageUserData.id;
       const token = this.storageToken;
-      console.log(token);
       if (this.storageToken != null && this.storageToken != undefined && this.storageToken != "") {
         api.get(`/order/cart/${user_id}`, {
           headers: {
@@ -259,11 +230,10 @@ export default {
           this.loginStatus = true;
           for (let i = 0; i < response.data.orderData.length; i++) {
             if (response.data.orderData[i].bookImage != null) {
-              response.data.orderData[i].bookImage = "http://localhost:8000/storage/" + response.data.orderData[i].bookImage;
+              response.data.orderData[i].bookImage = BOOKS_BASE_URL + response.data.orderData[i].bookImage;
             }
           }
           this.order = response.data.orderData;
-          console.log(this.order);
           this.loadingStatus = false,
             this.summaryCalculation();
         })
@@ -317,18 +287,19 @@ export default {
         }
       }).then((response) => {
         this.loginStatus = true;
+        console.log('data',);
         for (let i = 0; i < response.data.book.length; i++) {
           if (response.data.book[i].bookImage != null) {
-            response.data.book[i].bookImage = "http://localhost:8000/storage/" + response.data.book[i].bookImage;
+            response.data.book[i].bookImage = BOOKS_BASE_URL + response.data.book[i].bookImage;
           }
         }
         this.postLists = response.data.book;
         this.post = response.data.book;
         this.bookGenre = response.data.bookGenre;
+        console.log('gen', this.bookGenre);
         this.bookWriter = response.data.bookWriter;
         this.productsByPriceRange = response.data.productsByPriceRange,
-          console.log(this.productsByPriceRange);
-        this.user_name = this.storageUserData.name;
+          this.user_name = this.storageUserData.name;
         this.loadingStatus = false;
       })
         .catch((error) => {
@@ -341,7 +312,6 @@ export default {
       this.$router.push({
         name: 'HomeView'
       })
-      console.log(this.storageToken);
     },
     checkToken() {
       if (this.storageToken != null && this.storageToken != undefined && this.storageToken != "") {
@@ -360,33 +330,47 @@ export default {
         name: 'signUp'
       })
     },
+    incrementQuantity(index) {
+      this.order[index].quantity++;
+      this.updateTotal(index);
+      this.summaryCalculation();
+    },
+
+    decrementQuantity(index) {
+      if (this.order[index].quantity > 1) {
+        this.order[index].quantity--;
+        this.updateTotal(index);
+        this.summaryCalculation();
+      }
+    },
+
+    updateTotal(index) {
+      const price = parseFloat(this.order[index].price);
+      const quantity = this.order[index].quantity;
+      this.order[index].total = price * quantity;
+    },
+
+    summaryCalculation() {
+      let totalPrice = this.order.reduce((sum, item) => sum + (item.total || item.price), 0);
+      $("#subTotalPrice").text(`${totalPrice} Kyats`);
+      $("#finalPrice").text(`${totalPrice + 3000} Kyats`);
+    }
   },
   mounted() {
     this.GetBook();
-    console.log(this.storageToken);
-    console.log(this.storageUserData);
     this.checkToken();
     this.orderLength = this.storageOrderTotal;
     this.user_name = this.storageUserData.name;
-    this.srcImage = "http://localhost:8000/storage/" + this.storageUserData.image;
-    console.log(this.srcImage);
-    console.log(this.storageToken);
+    this.srcImage = this.storageUserData.image
+      ? (this.storageUserData.image.startsWith(BOOKS_BASE_URL)
+        ? this.storageUserData.image
+        : BOOKS_BASE_URL + this.storageUserData.image)
+      : "book/default.png";
 
-    if (this.storageUserData.image && this.storageUserData.image.startsWith("http://localhost:8000/storage/")) {
-      this.srcImage = this.storageUserData.image;
-    } else if (this.storageUserData.image === null) {
-      this.srcImage = "book/default.png";
-    } else {
-      this.srcImage = "http://localhost:8000/storage/" + (this.storageUserData.image || "");
-    }
-    console.log(this.srcImage);
-
-
-    $(document).ready(function () {
+    $(document).ready(() => {
       $('.sub-btn').click(function () {
         $(this).next('.sub-menu').stop().slideToggle();
         $(this).find('.dropdown').toggleClass('rotate');
-
       });
       $('.menu-btn').click(function () {
         $('.side-bar').addClass('active');
@@ -395,54 +379,9 @@ export default {
       $('.close-btn').click(function () {
         $('.side-bar').removeClass('active');
         $('.menu-btn').css('visibility', 'visible');
-      })
-      $(document).on('click', '.plus-btn', function () {
-        console.log("Plus button clicked");
-        let $parentNode = $(this).closest(".order-form-check");
-        console.log("$parentNode:", $parentNode);
-        let $price = parseFloat($parentNode.find('.price').val());
-        console.log("$price:", $price);
-        let $qty = Number($parentNode.find('.quantity').text()) + 1;
-        $parentNode.find('.quantity').text($qty);
-        console.log("$qty:", $qty);
-        let $total = $price * $qty;
-        console.log("$total:", $total);
-        $parentNode.find('#total').text($total + " kyats");
-        summaryCalculation();
-
       });
 
-      $(document).on('click', '.minus-btn', function () {
-        console.log("Plus button clicked");
-        let $parentNode = $(this).closest(".order-form-check");
-        let $price = parseFloat($parentNode.find('.price').val());
-        let $qty = Number($parentNode.find('.quantity').text());
-        if ($qty > 0) {
-          $qty--;
-          $parentNode.find('.quantity').text($qty);
-        }
-        let $total = $price * $qty;
-        console.log("$total:", $total);
-        $parentNode.find('#total').text($total + " kyats");
-        summaryCalculation();
-
-      });
-
-      $('.profile').click(function () {
-        $(this).next('#subMenu').slideToggle();
-      })
-
-      function summaryCalculation() {
-        let $totalPrice = 0;
-        console.log("$totalPrice:", $totalPrice);
-        $('.offcanvas-end td').each(function (index, row) {
-          console.log(row);
-          $totalPrice += Number($(row).find('#total').text().replace("kyats", ""));
-          console.log($totalPrice);
-        });
-        $("#subTotalPrice").text(`${$totalPrice} Kyats`);
-        $("#finalPrice").text(`${$totalPrice + 3000} Kyats`);
-      }
-    })
+    });
   }
+
 }
